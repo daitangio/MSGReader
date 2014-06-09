@@ -28,37 +28,115 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+          <h1>
+<a name="msgreader" class="anchor" href="#msgreader"><span class="octicon octicon-link"></span></a>MSGReader</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<ul>
+<li>
+<p>2014-05-17 Version 1.6 Beta (Work in progress)</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<ul>
+<li>Fixed bug in E-mail CC field that also went into the BCC field</li>
+<li>Fixed bug in appointment mapping</li>
+<li>Added AllAttendees, ToAttendees and CCAttendees properties to Appointment class</li>
+<li>Added Outlook properties to extended file properties mapping for:
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<ul>
+<li>E-mails</li>
+<li>Appointments</li>
+<li>Tasks</li>
+<li>Contacts</li>
+</ul>
+</li>
+</ul>
+<p>The properties mapping can be used by calling the SetExtendedFileAttributesWithMsgProperties method in the Reader class.
+Just input an msg file and all the available properties will be mapped. Windows 7 or higher is needed for this.</p>
+</li>
+<li>
+<p>2014-04-29 Version 1.5</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<ul>
+<li>Added Outlook contact(card) support</li>
+<li>Made properties late binding</li>
+</ul>
+</li>
+<li>
+<p>2014-04-21 Version 1.4</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ul>
+<li>Full support for MAPI named properties</li>
+<li>Added support for OLE attachments</li>
+<li>Added Outlook Appointment support</li>
+<li>Added Outlook Sticky notes support</li>
+<li>Added support so that ole images in RTF files get rendered correctly after converison to HTML (Tried to be as        close as possible to how it looks in Outlook).</li>
+<li>Extended E-mail support with RTF to HTML conversion. When there is no HTML body part and there is an RTF part 
+then this one gets converted to HTML.</li>
+<li>Moved all language specific things to a separate class so that this component can be easily translated to other       languages. Please send me the translations if you do this.</li>
+<li>Fixed a lot of bugs and made speed improvements</li>
+</ul>
+</li>
+<li>
+<p>2014-03-03 Version 1.3</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ul>
+<li>Completed implementing Outlook flag system on E-mail MSG object</li>
+<li>Made all the MAPI functions private</li>
+<li>Moved all language related things into a separate file so that it is easy to translate</li>
+<li>Moved all MAPI constants to a seperate file and added comment</li>
+<li>Removed some unused classes</li>
+<li>Cleaned up the code</li>
+<li>Added option to convert attachment locations to hyperlinks</li>
+<li>Fixed remove &lt; and &gt; when there is no E-mail address and only a displayname</li>
+<li>Fixed issue with SentOn and Received on not being parsed as a DateTime values</li>
+<li>Added support for categories in msg files (Outlook 2007 or later)</li>
+<li>Fixed issue with E-mail address and displayname being swapped</li>
+<li>Added RtfToHtmlConverter class (to convert RTF to HTML)</li>
+<li>Added Message Type property so that we know what kind of MSG object we have</li>
+</ul>
+</li>
+<li>
+<p>2014-03-20 Version 1.2.1</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li> Added support for double byte char sets like Chinese</li>
+</ul>
+</li>
+<li>
+<p>2014-03-18 Version 1.2</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<ul>
+<li> Fixed an issue with the Sent On (this was not set to the local timezone)</li>
+<li> Added Received On, this is now added to the injected Outlook header</li>
+<li> Added using statement to message object</li>
+<li> Made some Native Methods internal</li>
+<li> Fixed some disposing issues, this was done more the once on some places</li>
+<li> Refactored the code so that everything was correct according to the Microsoft code rules</li>
+</ul>
+</li>
+<li>
+<p>2014-03-06 Version 1.1</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li> Added support for special characters like German umlauts, they are parsed out of the HTML text that is                 embedded inside the RTF</li>
+<li> The RTFBody was loaded 4 times instead of once</li>
+<li> A CC was always added even when there was no CC (the To was taken in that case)</li>
+<li> Fixed some minor issues and cleaned up the code </li>
+</ul>
+</li>
+<li><p>2014-01-16 First release</p></li>
+</ul><h1>
+<a name="side-note" class="anchor" href="#side-note"><span class="octicon octicon-link"></span></a>SIDE NOTE:</h1>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>This project can also be used from a COM based language like VB script or VB6.
+To use it first compile the code and register the com visible assembly with the command:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Regasm.exe /codebase DocumentServices.Modules.Readers.MsgReader.dll</p>
+
+<p>After that you can call it like this:</p>
+
+<p>dim msgreader
+set msgreader = createobject("DocumentServices.Modules.Readers.MsgReader.Reader")
+msgreader.ExtractToFolder "the msg file to read", "the folder where to place the extracted files"</p>
         </section>
 
         <aside id="sidebar">
