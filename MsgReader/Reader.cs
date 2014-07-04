@@ -101,6 +101,7 @@ namespace DocumentServices.Modules.Readers.MsgReader
 
         #region ExtractToFolder
         /// <summary>
+        /// GG: PUT EXTENSION POINT HERE
         /// This method reads the <see cref="inputFile"/> and when the file is supported it will do the following: <br/>
         /// - Extract the HTML, RTF (will be converted to html) or TEXT body (in these order) <br/>
         /// - Puts a header (with the sender, to, cc, etc... (depends on the message type) on top of the body so it looks 
@@ -110,7 +111,10 @@ namespace DocumentServices.Modules.Readers.MsgReader
         /// </summary>
         /// <param name="inputFile">The msg file</param>
         /// <param name="outputFolder">The folder where to save the extracted msg file</param>
+        /// 
+        /// :::GG: DISABLE THIS OPTION VIA ENV VARIABLE:::
         /// <param name="hyperlinks">When true hyperlinks are generated for the To, CC, BCC and attachments</param>
+        /// 
         /// <returns>String array containing the full path to the message body and its attachments</returns>
         /// <exception cref="MRFileTypeNotSupported">Raised when the Microsoft Outlook message type is not supported</exception>
         /// <exception cref="MRInvalidSignedFile">Raised when the Microsoft Outlook signed message is invalid</exception>
