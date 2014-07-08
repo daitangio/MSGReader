@@ -1,6 +1,17 @@
 MSGReader
 =========
 
+#Intro
+C# Outlook MSG file reader without the need for Outlook.
+
+This version has been extended to be able to forward the email using 
+the Exchange Web Services (EWS).
+
+
+
+
+#History
+
 - 2014-07-04 Version 1.7 (Work in progres)
     - Support for signed MSG files
     - Support for EML (Mime 1.0) files
@@ -74,8 +85,10 @@ MSGReader
       
 - 2014-01-16 First release
 
+
 Translations
 ============
+
 
 - Kees van Spelde
     - English (US)
