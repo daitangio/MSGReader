@@ -23,9 +23,9 @@ namespace SharpUtils
             Dictionary<string, string> currentSection = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 
             ini[""] = currentSection;
-
+            // .NET 3.5 does not have string.IsNullOrWhiteSpace(t)
             foreach (var line in txt.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries)
-                                   .Where(t => !string.IsNullOrWhiteSpace(t))
+                                   .Where(t => !string.IsNullOrEmpty(t))
                                    .Select(t => t.Trim()))
             {
                 if (line.StartsWith(";") || line.StartsWith("#"))
@@ -78,6 +78,16 @@ namespace SharpUtils
         public string[] GetSections()
         {
             return ini.Keys.Where(t => t != "").ToArray();
+        }
+
+        /// <summary>
+        /// Return false if the parameter does not exist!
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public bool GetBoolean(string p)
+        {
+            return GetValue(p, "", "false").Equals("true", StringComparison.CurrentCultureIgnoreCase);
         }
     }
     public enum Config
